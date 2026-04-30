@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candle_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6037550773742891273, guid: 53e0183f7c4257b438df61fb75b5e4a7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6166113849308798864, guid: 53e0183f7c4257b438df61fb75b5e4a7, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
