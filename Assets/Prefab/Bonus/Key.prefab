@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8792568557075951863}
   - component: {fileID: 4462625875930311701}
   - component: {fileID: 8171244821032186985}
+  - component: {fileID: 4101930909344816796}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -80,6 +81,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46224b640cb3e0e42b27bb78c28a29d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key
+--- !u!114 &4101930909344816796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987018528087151599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c4a9e517da47f40814912580983fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyMovement
+  SpeedRotation: 3
 --- !u!1001 &5522649688311296992
 PrefabInstance:
   m_ObjectHideFlags: 0

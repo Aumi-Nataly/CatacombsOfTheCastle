@@ -26,6 +26,7 @@ public class InteractKey : MonoBehaviour, IInterable
 
     public void Interact()
     {
-        _inventoryService.Add(ItemType.Key, 1); 
+        _inventoryService.Add(ItemType.Key, 1);
+        gameObject.SetActive(false);
     }
 }

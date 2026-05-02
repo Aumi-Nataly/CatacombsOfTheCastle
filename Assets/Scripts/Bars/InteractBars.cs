@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractBars : MonoBehaviour, IInterable
 {
@@ -16,6 +17,7 @@ public class InteractBars : MonoBehaviour, IInterable
         renderer.material = normalMaterial;
     }
 
+
     public void ChangeLight(bool enable)
     {
         renderer.material = enable ? renderer.material = hightligthMaterial : normalMaterial;
@@ -28,6 +30,7 @@ public class InteractBars : MonoBehaviour, IInterable
 
     public void Interact()
     {
-        
+         Debug.Log("решетка нажата");
+ 
     }
 }

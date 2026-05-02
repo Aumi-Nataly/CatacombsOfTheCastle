@@ -1302,7 +1302,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 857515614729230215, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
       propertyPath: SpeedRotation
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2543078074917843017, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
       propertyPath: m_Name
@@ -1311,10 +1311,6 @@ PrefabInstance:
     - target: {fileID: 2543078074917843017, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6999871484761443944, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
-      propertyPath: m_Mass
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6999871484761443944, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
       propertyPath: m_Constraints
@@ -1554,7 +1550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655232621942783979, guid: 414b62f2259757b4c84044d62dc6c28a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.5797005
+      value: -7.06
       objectReference: {fileID: 0}
     - target: {fileID: 1655232621942783979, guid: 414b62f2259757b4c84044d62dc6c28a, type: 3}
       propertyPath: m_LocalPosition.z
