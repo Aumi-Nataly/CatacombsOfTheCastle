@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InteractBars : MonoBehaviour, IInterable
 {
+    [SerializeField]
+    private int Id;
+
     [SerializeField]
     private Material normalMaterial;
 
@@ -15,6 +17,15 @@ public class InteractBars : MonoBehaviour, IInterable
     {
         renderer = GetComponent<Renderer>();
         renderer.material = normalMaterial;
+    }
+
+    void Start()
+    {
+        //  Скрыть, если он уже был подобран
+        if (PlayerPrefs.GetInt("bars_" + Id.ToString(), 0) == 1)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
 
@@ -30,7 +41,9 @@ public class InteractBars : MonoBehaviour, IInterable
 
     public void Interact()
     {
-         Debug.Log("решетка нажата");
- 
+        gameObject.SetActive(false);
+        PlayerPrefs.SetInt("bars_" + Id.ToString(), 1);
+        PlayerPrefs.Save();
+
     }
 }
