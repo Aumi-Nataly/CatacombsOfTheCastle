@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using VContainer;
+
 public class InventoryService : IInventoryService
 {
     private Dictionary<ItemType, int> items = new Dictionary<ItemType, int>();
@@ -73,4 +73,13 @@ public class InventoryService : IInventoryService
         _saveService.SaveData(new SaveData { Type = SaveType.Inventory, listParams = paramList });
     }
 
+    public int GetСoncreteItem(ItemType id)
+    {
+        if (items.TryGetValue(id, out int CurCount))
+        {
+            return CurCount;
+        }
+
+        return 0;
+    }
 }

@@ -25,4 +25,6 @@ public interface IInventoryService
     /// Сохранить данные в файл при смене сцены
     /// </summary>
     public void WriteToFile();
+
+    public int GetСoncreteItem(ItemType id);
 }

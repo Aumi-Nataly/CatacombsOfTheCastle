@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 public class InteractBars : MonoBehaviour, IInterable
 {
@@ -13,6 +14,17 @@ public class InteractBars : MonoBehaviour, IInterable
 
     private Renderer renderer;
 
+
+    private IInventoryService _inventoryService;
+
+    [Inject]
+    public void Construct(IInventoryService inventoryService)
+    {
+        _inventoryService = inventoryService;
+    }
+
+
+
     void Awake()
     {
         renderer = GetComponent<Renderer>();
@@ -21,7 +33,6 @@ public class InteractBars : MonoBehaviour, IInterable
 
     void Start()
     {
-        //  Скрыть, если он уже был подобран
         if (PlayerPrefs.GetInt("bars_" + Id.ToString(), 0) == 1)
         {
             gameObject.SetActive(false);
@@ -41,9 +52,14 @@ public class InteractBars : MonoBehaviour, IInterable
 
     public void Interact()
     {
-        gameObject.SetActive(false);
-        PlayerPrefs.SetInt("bars_" + Id.ToString(), 1);
-        PlayerPrefs.Save();
+        if (_inventoryService.GetСoncreteItem(ItemType.Key) > 0)
+        {
+            gameObject.SetActive(false);
+            PlayerPrefs.SetInt("bars_" + Id.ToString(), 1);
+            PlayerPrefs.Save();
+
+            _inventoryService.Remove(ItemType.Key, 1);
+        }
 
     }
 }

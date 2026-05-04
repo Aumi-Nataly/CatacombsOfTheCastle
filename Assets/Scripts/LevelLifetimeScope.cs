@@ -8,5 +8,6 @@ public class LevelLifetimeScope : LifetimeScope
         builder.Register<ISaveService, SaveService>(Lifetime.Scoped);
         builder.Register<IInventoryService, InventoryService>(Lifetime.Scoped);
         builder.RegisterComponentInHierarchy<InteractKey>();
+        builder.RegisterComponentInHierarchy<InteractBars>();
     }
 }
