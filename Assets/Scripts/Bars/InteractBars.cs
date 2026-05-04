@@ -13,8 +13,6 @@ public class InteractBars : MonoBehaviour, IInterable
     private Material hightligthMaterial;
 
     private Renderer renderer;
-
-
     private IInventoryService _inventoryService;
 
     [Inject]
@@ -22,8 +20,6 @@ public class InteractBars : MonoBehaviour, IInterable
     {
         _inventoryService = inventoryService;
     }
-
-
 
     void Awake()
     {
@@ -36,9 +32,11 @@ public class InteractBars : MonoBehaviour, IInterable
         if (PlayerPrefs.GetInt("bars_" + Id.ToString(), 0) == 1)
         {
             gameObject.SetActive(false);
+            Debug.Log($"Bars {Id} SetActive: false");
         }
-    }
 
+        Debug.Log($"Bars {Id} injected: " + (_inventoryService != null));
+    }
 
     public void ChangeLight(bool enable)
     {
@@ -60,6 +58,5 @@ public class InteractBars : MonoBehaviour, IInterable
 
             _inventoryService.Remove(ItemType.Key, 1);
         }
-
     }
 }

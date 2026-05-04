@@ -26,7 +26,15 @@ public class InventoryService : IInventoryService
 
     public void Add(ItemType id, int count)
     {
-        items.TryAdd(id, count);
+        if (items.ContainsKey(id))
+        {
+            items[id] = count; 
+        }
+        else
+        {
+            items[id] = count; 
+        }
+
     }
 
     public Dictionary<ItemType, int> GetInventoryList()
