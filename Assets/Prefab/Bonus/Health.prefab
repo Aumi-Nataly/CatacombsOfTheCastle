@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2073031945391243988}
   - component: {fileID: 53578426731198114}
   - component: {fileID: 7693449903760890710}
+  - component: {fileID: 330518736288218614}
+  - component: {fileID: 3030796282145381102}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -4859,6 +4861,31 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &330518736288218614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117945894479259581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713434a85ef7ef94bb93c1f680e5a4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractBottleHealth
+  Id: 1
+--- !u!114 &3030796282145381102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117945894479259581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347069112a7873b489d9e713d0ca54a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BottleHealth
 --- !u!1001 &6597130918975177821
 PrefabInstance:
   m_ObjectHideFlags: 0
