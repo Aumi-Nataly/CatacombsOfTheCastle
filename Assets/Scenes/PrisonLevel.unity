@@ -1514,7 +1514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1537961739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1646,9 +1646,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryView
   slotsParent: {fileID: 1537961739}
   slotPrefab: {fileID: 3111443821165217940, guid: fae2b7b136fdfbd4b81e9f06660448f8, type: 3}
+  Player: {fileID: 1650003589}
   listItems:
   - {fileID: 11400000, guid: ed6181083aef20141a5915576a3c0feb, type: 2}
   - {fileID: 11400000, guid: 4174c70e48be7104ca65814d77313fdc, type: 2}
+--- !u!1 &1650003589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2543078074917843017, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
+  m_PrefabInstance: {fileID: 1685642533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1685642533
 PrefabInstance:
   m_ObjectHideFlags: 0

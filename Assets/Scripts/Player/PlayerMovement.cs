@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private bool InteractOn;
 
 
+    public event Action OnInventoryClick;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,18 +36,24 @@ public class PlayerMovement : MonoBehaviour
     private void OnInteract(InputAction.CallbackContext context)
     => InteractOn = true;
 
+    private void InventoryClick(InputAction.CallbackContext context)
+        => OnInventoryClick?.Invoke();
+
     private void OnEnable()
     {
         actions.Player.Enable();
         actions.Player.Move.performed += OnMove;
         actions.Player.Move.canceled += OnMoveCancel;
         actions.Player.Interaction.performed += OnInteract;
+        actions.Player.Inventory.performed += InventoryClick;
     }
     private void OnDisable()
     {
         actions.Player.Disable();
         actions.Player.Move.performed -= OnMove;
         actions.Player.Move.canceled -= OnMoveCancel;
+        actions.Player.Interaction.performed -= OnInteract;
+        actions.Player.Inventory.performed -= InventoryClick;
     }
 
 
