@@ -17,7 +17,7 @@ public class InventoryView : MonoBehaviour
 
     private List<InventorySlotUI> slots = new();
 
-
+    private PlayerMovement pl;
     private IInventoryService _inventoryService;
 
     [Inject]
@@ -28,10 +28,15 @@ public class InventoryView : MonoBehaviour
 
     private void Start()
     {
-        var pl = Player.GetComponent<PlayerMovement>();
+        pl = Player.GetComponent<PlayerMovement>();
         pl.OnInventoryClick += OpenCloseInventory;
 
         Init();
+    }
+
+    private void OnDestroy()
+    {
+        pl.OnInventoryClick -= OpenCloseInventory;
     }
 
     public void Init()
@@ -66,18 +71,7 @@ public class InventoryView : MonoBehaviour
         }
 
         slotsParent.gameObject.SetActive(res);
-
         HasOpened = !HasOpened;
 
-       // Cursor.visible = res;
-       // Cursor.lockState = CursorLockMode.None;
     }
-
-    //public void Close()
-    //{
-    //    panel.SetActive(false);
-
-    //    Cursor.visible = false;
-    //    Cursor.lockState = CursorLockMode.Locked;
-    //}
 }

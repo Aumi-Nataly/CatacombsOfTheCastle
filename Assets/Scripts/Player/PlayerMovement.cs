@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 MoveVector;
     private Vector3 DirRotation;
     private bool InteractOn;
-
+    private Animator animator;
 
     public event Action OnInventoryClick;
 
@@ -25,13 +24,22 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         actions = new PlayerAction();
+
+        Transform modelChild = transform.GetChild(0);
+        animator = modelChild.GetComponent<Animator>();
     }
 
     private void OnMove(InputAction.CallbackContext context)
-        => MoveVector = context.ReadValue<Vector2>();
+    { 
+        MoveVector = context.ReadValue<Vector2>(); 
+        animator.SetBool("IsRunning", true);
+    }
 
     private void OnMoveCancel(InputAction.CallbackContext context)
-    => MoveVector = Vector2.zero;
+    { 
+        MoveVector = Vector2.zero;
+        animator.SetBool("IsRunning", false);
+    }
 
     private void OnInteract(InputAction.CallbackContext context)
     => InteractOn = true;

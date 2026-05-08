@@ -7,9 +7,10 @@ public class LevelLifetimeScope : LifetimeScope
     {
         builder.Register<ISaveService, SaveService>(Lifetime.Scoped);
         builder.Register<IInventoryService, InventoryService>(Lifetime.Scoped);
-        builder.RegisterComponentInHierarchy<InteractKey>();
-        builder.RegisterComponentInHierarchy<InventoryView>();
+          builder.RegisterComponentInHierarchy<InteractKey>();
+          builder.RegisterComponentInHierarchy<InventoryView>();
 
+        //все поля с атрибутом [Inject] в компонентах gameObject будут заполнены
         builder.RegisterBuildCallback(container =>
         {
             container.InjectGameObject(gameObject);

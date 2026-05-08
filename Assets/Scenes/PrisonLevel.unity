@@ -1663,22 +1663,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 794978301}
     m_Modifications:
-    - target: {fileID: 857515614729230215, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
-      propertyPath: SpeedRotation
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2543078074917843017, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 2543078074917843017, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6999871484761443944, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
+    - target: {fileID: 6982747107495638286, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c36eb84361928844cab795c466fcf3e8, type: 2}
     - target: {fileID: 7843111533709441318, guid: f9b1216cbb5110642809b3777c4cb9ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.25
@@ -1918,7 +1910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "E - \u0430\u0442\u0430\u043A\u0430\nF - \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\nI
+  m_text: "Q - \u043B\u0435\u0447\u0435\u043D\u0438\u0435\nF - \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\nI
     - \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
