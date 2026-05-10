@@ -19,7 +19,6 @@ public class InteractDoor : MonoBehaviour, IInterable
     public void ChangeLight(bool enable)
     {
         lightComponent.enabled = enable;
-       Debug.Log("Верь светится");
     }
 
     public string GetInteractPromt()

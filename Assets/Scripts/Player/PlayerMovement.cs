@@ -10,12 +10,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float SpeedRotation;
 
+    [SerializeField]
+    private float PowerJump;
+
+    [SerializeField]
+    private LayerMask groundMask;
+
     private PlayerAction actions;
     private Rigidbody rb;
     private Vector2 MoveVector;
     private Vector3 DirRotation;
     private bool InteractOn;
     private Animator animator;
+    private bool isJump;
 
     public event Action OnInventoryClick;
 
@@ -47,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     private void InventoryClick(InputAction.CallbackContext context)
         => OnInventoryClick?.Invoke();
 
+    private void OnJump(InputAction.CallbackContext context)
+     => isJump = true;
+
     private void OnEnable()
     {
         actions.Player.Enable();
@@ -54,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Move.canceled += OnMoveCancel;
         actions.Player.Interaction.performed += OnInteract;
         actions.Player.Inventory.performed += InventoryClick;
+        actions.Player.Jump.performed += OnJump;
     }
     private void OnDisable()
     {
@@ -62,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Move.canceled -= OnMoveCancel;
         actions.Player.Interaction.performed -= OnInteract;
         actions.Player.Inventory.performed -= InventoryClick;
+        actions.Player.Jump.performed -= OnJump;
     }
 
 
@@ -70,6 +82,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Jump();
+        IsGround();
+
         Vector2 input = MoveVector;
         if (input.magnitude < 0.1f)
         {
@@ -96,4 +111,36 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private bool IsGround()
+    {
+        var posline = transform.position + Vector3.up * 0.9f;
+        var dic = Vector3.down;
+        bool isGrounded = Physics.Raycast(posline, dic, 1.1f, groundMask);
+
+        if (!isGrounded && animator.GetBool("IsJumping"))
+        {
+            animator.SetBool("IsJumping", false);
+        }
+
+        return isGrounded;
+    }
+
+    private void Jump()
+    {
+        if (isJump && IsGround())
+        {
+            animator.SetBool("IsJumping", true);
+            rb.AddForce(Vector3.up * PowerJump, ForceMode.Impulse);
+        }
+
+        isJump = false;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        var posline = transform.position + Vector3.up * 0.9f;
+        var dic = Vector3.down * 1.1f;
+        Debug.DrawRay(posline, dic, Color.red);
+    }
 }

@@ -99,6 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   SpeedMove: 5
   SpeedRotation: 8
+  PowerJump: 5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &198700548378471262
 PrefabInstance:
   m_ObjectHideFlags: 0
