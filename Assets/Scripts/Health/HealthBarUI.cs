@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +10,12 @@ public class HealthBarUI : MonoBehaviour
     private Health healthPlayer;
 
     [SerializeField]
-    private TMP_Text HealthText;
+    private GameObject HealthText;
 
+    [SerializeField]
+    private float Speed;
+
+    private float itogValue;
 
     private void Start()
     {
@@ -27,9 +30,12 @@ public class HealthBarUI : MonoBehaviour
 
     public void SetValueHealthUI(int current, int max)
     {
-        image.fillAmount = (float)current / max;
+        itogValue = (float)current / max;
+        HealthText.GetComponent<Text>().text = $"{current.ToString()} / {max.ToString()}";
+    }
 
-        HealthText.text = $"{current.ToString()} / {max.ToString()}";
-
+    void Update()
+    {
+        image.fillAmount = Mathf.Lerp(image.fillAmount, itogValue, Time.deltaTime * Speed); 
     }
 }
