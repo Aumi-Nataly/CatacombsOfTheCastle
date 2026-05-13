@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa7dbbadc34069458df69de54fe1406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  BottleHealthValue: 30
   SpeedMove: 5
   SpeedRotation: 8
   PowerJump: 5

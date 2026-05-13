@@ -12,12 +12,14 @@ public class Health : MonoBehaviour
 
     private int CurrentHealth;
     private ISaveService _saveService;
+    private IInventoryService _inventoryService;
     public event Action<int, int> OnHealthChanged;
 
     [Inject]
-    public void Construct(ISaveService saveService)
+    public void Construct(ISaveService saveService, IInventoryService inventoryService)
     {
         _saveService = saveService;
+        _inventoryService = inventoryService;
     }
 
     private void Start()
@@ -37,19 +39,26 @@ public class Health : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             Die();
-        }     
+        }
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
     }
 
     public void TakeHealth(int health)
     {
-        CurrentHealth += health;
-        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
-        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        if (_inventoryService.GetСoncreteItem(ItemType.HealthBottle) > 0)
+        {
+            CurrentHealth += health;
+            CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
+            OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+
+            _inventoryService.Remove(ItemType.HealthBottle, 1);
+        }
+
+
     }
 
     private void Die()
-    { 
-    
+    {
+
     }
 }

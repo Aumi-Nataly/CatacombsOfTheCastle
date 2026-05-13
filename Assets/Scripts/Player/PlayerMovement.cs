@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
+    private int BottleHealthValue;
+
+    [SerializeField]
     private float SpeedMove;
 
     [SerializeField]
@@ -23,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool InteractOn;
     private Animator animator;
     private bool isJump;
+    private Health health;
 
     public event Action OnInventoryClick;
 
@@ -31,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         actions = new PlayerAction();
+        health = GetComponent<Health>();
 
         Transform modelChild = transform.GetChild(0);
         animator = modelChild.GetComponent<Animator>();
@@ -57,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnJump(InputAction.CallbackContext context)
      => isJump = true;
 
+    private void OnDrinkBottleHealth(InputAction.CallbackContext context)
+    => health.TakeHealth(BottleHealthValue);
+   
+
     private void OnEnable()
     {
         actions.Player.Enable();
@@ -65,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Interaction.performed += OnInteract;
         actions.Player.Inventory.performed += InventoryClick;
         actions.Player.Jump.performed += OnJump;
+        actions.Player.Healing.performed += OnDrinkBottleHealth;
     }
     private void OnDisable()
     {
