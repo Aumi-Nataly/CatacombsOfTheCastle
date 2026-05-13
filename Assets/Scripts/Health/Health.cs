@@ -8,24 +8,32 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int MaxHealth;
 
-    //добавить разделение на игрока и врага
+    [SerializeField]
+    private int DefaultHealth;
 
     private int CurrentHealth;
-    private ISaveService _saveService;
+    //добавить разделение на игрока и врага
+
+
     private IInventoryService _inventoryService;
     public event Action<int, int> OnHealthChanged;
 
     [Inject]
-    public void Construct(ISaveService saveService, IInventoryService inventoryService)
+    public void Construct(IInventoryService inventoryService)
     {
-        _saveService = saveService;
         _inventoryService = inventoryService;
     }
 
     private void Start()
     {
-        CurrentHealth = MaxHealth;
+        CurrentHealth = PlayerPrefs.GetInt("CurrentPlayerHealth", DefaultHealth);
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("CurrentPlayerHealth", CurrentHealth);
+        PlayerPrefs.Save();
     }
 
     public int GetCurrent() => CurrentHealth;

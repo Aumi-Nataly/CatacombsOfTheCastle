@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class InteractDoor : MonoBehaviour, IInterable
@@ -28,6 +29,6 @@ public class InteractDoor : MonoBehaviour, IInterable
 
     public void Interact()
     {
-        
+        SceneManager.LoadScene(NextLvlName);
     }
 }
