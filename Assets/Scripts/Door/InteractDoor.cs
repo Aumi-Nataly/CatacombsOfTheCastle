@@ -29,6 +29,7 @@ public class InteractDoor : MonoBehaviour, IInterable
 
     public void Interact()
     {
-        SceneManager.LoadScene(NextLvlName);
+        LoaderScene.NextSceneName = NextLvlName;
+        SceneManager.LoadScene("LoadingScene");
     }
 }
