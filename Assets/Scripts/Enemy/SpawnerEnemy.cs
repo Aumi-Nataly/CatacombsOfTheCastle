@@ -22,7 +22,7 @@ public class SpawnerEnemy : MonoBehaviour
 
     private void Awake()
     {
-        pool = new Pool(prefabEnemy, PoolSize);
+        pool = new Pool(prefabEnemy, PoolSize, transform);
 
     }
 
@@ -31,20 +31,13 @@ public class SpawnerEnemy : MonoBehaviour
          StartCoroutine(CreateWave());
     }
 
-
-
-    private void Update()
-    { 
-        
-    }
-
     private IEnumerator CreateWave()
     {
         for (int i = 0; i < WaveSize; i++)
         {
             var obj = pool.GetFromPool();
             ActiveEnemyList.Add(1);
-            obj.transform.position = transform.position;
+          //  obj.transform.position = transform.position;
             yield return new WaitForSeconds(WaveTimeInside);
         }
     }
