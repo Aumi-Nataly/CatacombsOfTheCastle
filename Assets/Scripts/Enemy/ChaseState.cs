@@ -1,6 +1,4 @@
 
-using System.Diagnostics;
-
 public class ChaseState : IEnemyState
 {
     private Enemy _enemy;
@@ -10,7 +8,8 @@ public class ChaseState : IEnemyState
     }
 
     public void Enter()
-    {  
+    {
+        _enemy.SetFlagStopped(false);
     }
 
     public void Exit()
@@ -20,5 +19,11 @@ public class ChaseState : IEnemyState
     public void Update()
     {
         _enemy.Chase();
+
+        if (_enemy.TargetIsNear())
+        {
+            _enemy.enemyStateMachine.ChangeState(new AttackState(_enemy));
+            return;
+        }
     }
 }
