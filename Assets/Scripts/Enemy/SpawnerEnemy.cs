@@ -37,7 +37,6 @@ public class SpawnerEnemy : MonoBehaviour
         {
             var obj = pool.GetFromPool();
             ActiveEnemyList.Add(1);
-          //  obj.transform.position = transform.position;
             yield return new WaitForSeconds(WaveTimeInside);
         }
     }

@@ -5,13 +5,16 @@ public class Pool : MonoBehaviour
 {
     private Queue<GameObject> pool = new Queue<GameObject>();
 
-    public Pool(GameObject prefab, int poolSize, Transform parent)
+    public Pool(GameObject prefab, int poolSize, Transform parent = null)
     {
         for (int i = 0; i < poolSize; i++)        
         { 
             GameObject obj = Instantiate(prefab);
             obj.SetActive(false);
-            obj.transform.position = parent.position;
+
+            if (parent != null)
+              obj.transform.position = parent.position;
+
             pool.Enqueue(obj);
         }
     }

@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask groundMask;
 
+    [SerializeField]
+    private GameObject SpawnerBullet;
+
     private PlayerAction actions;
     private Rigidbody rb;
     private Vector2 MoveVector;
@@ -64,7 +67,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrinkBottleHealth(InputAction.CallbackContext context)
     => health.TakeHealth(BottleHealthValue);
-   
+
+
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        SpawnerBullet sp = SpawnerBullet.GetComponent<SpawnerBullet>();
+        sp.Shoot();
+    }
 
     private void OnEnable()
     {
@@ -75,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Inventory.performed += InventoryClick;
         actions.Player.Jump.performed += OnJump;
         actions.Player.Healing.performed += OnDrinkBottleHealth;
+        actions.Player.Attack.performed += OnAttack;
     }
     private void OnDisable()
     {
@@ -84,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Interaction.performed -= OnInteract;
         actions.Player.Inventory.performed -= InventoryClick;
         actions.Player.Jump.performed -= OnJump;
+        actions.Player.Attack.performed -= OnAttack;
     }
 
 
