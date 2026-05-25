@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2407670727847724269}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   AttackDistance: 3
   DamageValue: 5
   childObject: {fileID: 1488073664473102104}
+  Health: 15
 --- !u!65 &4292896972634313231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,7 +70,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1.27, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &2407670727847724269
 NavMeshAgent:

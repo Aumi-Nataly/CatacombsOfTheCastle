@@ -37,7 +37,19 @@ public class SpawnerEnemy : MonoBehaviour
         {
             var obj = pool.GetFromPool();
             ActiveEnemyList.Add(1);
+
+            var enemyScript = obj.GetComponent<Enemy>();
+            if (enemyScript != null)
+            { 
+              enemyScript.OnReturnPoolEnemy += ReturnToPool;
+            }
+            
             yield return new WaitForSeconds(WaveTimeInside);
         }
+    }
+
+    private void ReturnToPool(GameObject enemy)
+    {
+        pool.ReturnToPool(enemy);
     }
 }

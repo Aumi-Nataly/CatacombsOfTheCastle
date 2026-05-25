@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,11 +13,17 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject childObject;
 
+    [SerializeField]
+    private int Health;
+
+    public Action<GameObject> OnReturnPoolEnemy;
+
     private NavMeshAgent agent;
     private GameObject player;
     private EnemyStateMachine machine;
     private Animator animator;
     private Health playerHealth;
+    private int CurrentHealth;
 
     public EnemyStateMachine enemyStateMachine => machine;
 
@@ -28,6 +35,12 @@ public class Enemy : MonoBehaviour
         animator = childObject.GetComponent<Animator>();
          
 
+    }
+
+    private void OnEnable()
+    {
+        agent.enabled = true;
+        CurrentHealth = Health;
     }
 
     private void Start()
@@ -67,5 +80,27 @@ public class Enemy : MonoBehaviour
     public void SetFlagStopped(bool flag)
     {
         agent.isStopped = flag;
+    }
+
+    public void GetDamage(int damage)
+    {
+        CurrentHealth -= damage;
+
+        if (CurrentHealth <= 0)
+        {
+            machine.ChangeState(new DeadState(this));
+        }
+    }
+
+    public void EnemyOff()
+    {
+        SetFlagStopped(true);
+        agent.enabled = false;
+        animator.SetTrigger("Dead");
+    }
+
+    public void ReturnToPool()
+    {
+        OnReturnPoolEnemy?.Invoke(gameObject);
     }
 }

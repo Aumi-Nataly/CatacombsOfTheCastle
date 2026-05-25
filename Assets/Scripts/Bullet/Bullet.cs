@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float TimeLife;
 
+    [SerializeField]
+    private int Damage;
+
     private Vector3 Direction;
     private Coroutine MovingBulletCoroutine;
     public Action<GameObject> OnReturnPool;
@@ -41,5 +44,15 @@ public class Bullet : MonoBehaviour
     public void SetDirection(Vector3 dir)
     {
         Direction = dir;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {   
+        if (other.CompareTag("Enemy"))
+        {
+            var enemy = other.GetComponent<Enemy>();
+            enemy.GetDamage(Damage);
+        }
     }
 }

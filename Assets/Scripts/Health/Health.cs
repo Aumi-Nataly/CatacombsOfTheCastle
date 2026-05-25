@@ -12,7 +12,6 @@ public class Health : MonoBehaviour
     private int DefaultHealth;
 
     private int CurrentHealth;
-    //добавить разделение на игрока и врага
 
 
     private IInventoryService _inventoryService;
