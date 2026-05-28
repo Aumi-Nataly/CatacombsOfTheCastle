@@ -107,6 +107,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   SpawnerBullet: {fileID: 4370830696916077096}
+  UIManager: {fileID: 6490838386092353472, guid: 614236fca34befa438cbb1db35694e5a, type: 3}
 --- !u!114 &3065343482674932178
 MonoBehaviour:
   m_ObjectHideFlags: 0

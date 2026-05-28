@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject SpawnerBullet;
 
+    [SerializeField]
+    private GameObject UIManager;
+
     private PlayerAction actions;
     private Rigidbody rb;
     private Vector2 MoveVector;
@@ -75,6 +78,13 @@ public class PlayerMovement : MonoBehaviour
         sp.Shoot();
     }
 
+    private void OnPauseMenu(InputAction.CallbackContext context)
+    {
+        PauseScreen sp = UIManager.GetComponent<PauseScreen>();
+        sp.ViewPauseScreen(true);
+    }
+
+
     private void OnEnable()
     {
         actions.Player.Enable();
@@ -85,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Jump.performed += OnJump;
         actions.Player.Healing.performed += OnDrinkBottleHealth;
         actions.Player.Attack.performed += OnAttack;
+        actions.Player.Pause.performed += OnPauseMenu;
     }
     private void OnDisable()
     {
@@ -95,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Inventory.performed -= InventoryClick;
         actions.Player.Jump.performed -= OnJump;
         actions.Player.Attack.performed -= OnAttack;
+        actions.Player.Pause.performed -= OnPauseMenu;
     }
 
 
