@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnPauseMenu(InputAction.CallbackContext context)
     {
         PauseScreen sp = UIManager.GetComponent<PauseScreen>();
-        sp.ViewPauseScreen(false);
+        sp.ViewPauseScreen(true);
     }
 
 
