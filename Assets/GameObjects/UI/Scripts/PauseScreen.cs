@@ -6,9 +6,27 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] 
     private GameObject pausePanel;
 
-    public void ViewPauseScreen(bool view)
+    [SerializeField]
+    private GameObject Player;
+
+    private PlayerMovement pl;
+    private bool HasOpened;
+
+    private void Start()
     {
-        Debug.Log($"ViewPauseScreen {view}");
+        pl = Player.GetComponent<PlayerMovement>();
+        pl.OnPauseClick += ViewPauseScreen;
+
+    }
+
+    private void OnDestroy()
+    {
+        pl.OnInventoryClick -= ViewPauseScreen;
+    }
+
+    public void ViewPauseScreen()
+    {
+        Debug.Log($"ViewPauseScreen {HasOpened}");
 
         // Проверка на null для pausePanel
         if (pausePanel == null)
@@ -18,16 +36,17 @@ public class PauseScreen : MonoBehaviour
         }
 
 
-        Cursor.visible = view;
-        Cursor.lockState = view ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = HasOpened;
+        Cursor.lockState = HasOpened ? CursorLockMode.None : CursorLockMode.Locked;
         
-        pausePanel.SetActive(view);
-        Time.timeScale = view ? 0f : 1f;
+        pausePanel.SetActive(HasOpened);
+        Time.timeScale = HasOpened ? 0f : 1f;
+        HasOpened = !HasOpened;
     }
 
     public void ResumeGame()
     {
-        ViewPauseScreen(false);
+        ViewPauseScreen();
     }
     public void GoToMainMenu()
     {

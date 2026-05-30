@@ -22,9 +22,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject SpawnerBullet;
 
-    [SerializeField]
-    private GameObject UIManager;
-
     private PlayerAction actions;
     private Rigidbody rb;
     private Vector2 MoveVector;
@@ -35,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private Health health;
 
     public event Action OnInventoryClick;
+    public event Action OnPauseClick;
 
 
     private void Awake()
@@ -79,10 +77,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnPauseMenu(InputAction.CallbackContext context)
-    {
-        PauseScreen sp = UIManager.GetComponent<PauseScreen>();
-        sp.ViewPauseScreen(true);
-    }
+        => OnPauseClick?.Invoke();
 
 
     private void OnEnable()
