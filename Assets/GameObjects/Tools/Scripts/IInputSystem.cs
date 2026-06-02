@@ -11,5 +11,7 @@ public interface IInputSystem
     public void ResetInteractOn();
     public bool GetJump();
     public void ResetJump();
+    public void ResetAttack();
+    public void AddAttack();
 
 }

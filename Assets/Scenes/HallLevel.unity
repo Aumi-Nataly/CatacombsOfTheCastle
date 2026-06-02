@@ -1053,6 +1053,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2550696082840311791, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1166155209}
+    - target: {fileID: 2550696082840311791, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 6253199231603964471, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 352.9519
@@ -1077,6 +1085,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7118395953556532969, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 1166155208}
     - target: {fileID: 7309476547050451660, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1198,6 +1210,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1166155208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5452671557103586515, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
+  m_PrefabInstance: {fileID: 1166155205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1166155209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7118395953556532969, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
+  m_PrefabInstance: {fileID: 1166155205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac748ec9c13004dab4a87d712e945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseScreen
 --- !u!1001 &1337632572
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using VContainer;
 
 public class PauseScreen : MonoBehaviour
@@ -11,7 +12,7 @@ public class PauseScreen : MonoBehaviour
     private IInputSystem _inputSystem;
 
     [Inject]
-    public void Construct( IInputSystem inputSystem)
+    public void Construct(IInputSystem inputSystem)
     {
         _inputSystem = inputSystem;
     }
@@ -28,15 +29,20 @@ public class PauseScreen : MonoBehaviour
 
     public void ViewPauseScreen()
     {
-        Debug.Log($"ViewPauseScreen {HasOpened}");
-
-        // Проверка на null для pausePanel
         if (pausePanel == null)
         {
             Debug.LogError("pausePanel не назначен в инспекторе!");
             return;
         }
 
+        if (HasOpened)
+        {
+            _inputSystem.ResetAttack();
+        }
+        else 
+        {
+            _inputSystem.AddAttack();
+        }
 
         Cursor.visible = HasOpened;
         Cursor.lockState = HasOpened ? CursorLockMode.None : CursorLockMode.Locked;

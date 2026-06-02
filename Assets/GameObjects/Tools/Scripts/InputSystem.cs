@@ -40,6 +40,16 @@ public class InputSystem: IInputSystem
 
     public void ResetJump() => isJump = false;
 
+    public void ResetAttack()
+    {
+        actions.Player.Attack.performed -= OnAttack;
+    }
+
+    public void AddAttack()
+    {
+        actions.Player.Attack.performed += OnAttack;
+    }
+
 
 
     private void OnAttack(InputAction.CallbackContext context)

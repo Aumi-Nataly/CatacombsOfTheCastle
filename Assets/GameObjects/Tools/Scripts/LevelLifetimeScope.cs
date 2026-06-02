@@ -16,6 +16,7 @@ public class LevelLifetimeScope : LifetimeScope
 
 
           builder.RegisterComponentInHierarchy<InventoryView>();
+          builder.RegisterComponentInHierarchy<PauseScreen>();
 
         //все поля с атрибутом [Inject] в компонентах gameObject будут заполнены
         builder.RegisterBuildCallback(container =>
