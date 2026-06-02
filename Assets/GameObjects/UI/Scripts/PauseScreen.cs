@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 public class PauseScreen : MonoBehaviour
 {
@@ -6,22 +7,23 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] 
     private GameObject pausePanel;
 
-    [SerializeField]
-    private GameObject Player;
-
-    private PlayerMovement pl;
     private bool HasOpened;
+    private IInputSystem _inputSystem;
+
+    [Inject]
+    public void Construct( IInputSystem inputSystem)
+    {
+        _inputSystem = inputSystem;
+    }
 
     private void Start()
     {
-        pl = Player.GetComponent<PlayerMovement>();
-        pl.OnPauseClick += ViewPauseScreen;
-
+        _inputSystem.OnPauseClick += ViewPauseScreen;
     }
 
     private void OnDestroy()
     {
-        pl.OnInventoryClick -= ViewPauseScreen;
+        _inputSystem.OnPauseClick -= ViewPauseScreen;
     }
 
     public void ViewPauseScreen()

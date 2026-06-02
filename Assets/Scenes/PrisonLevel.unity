@@ -1211,6 +1211,10 @@ PrefabInstance:
       propertyPath: NextLvlName
       value: CorridorLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 1493172981364945137, guid: 9a10e8721e24dc145b634f428680f3dc, type: 3}
+      propertyPath: parentReference.TypeName
+      value: GameLifetimeScope
+      objectReference: {fileID: 0}
     - target: {fileID: 4108466882378767442, guid: 9a10e8721e24dc145b634f428680f3dc, type: 3}
       propertyPath: MaxHealth
       value: 100
@@ -1844,6 +1848,10 @@ PrefabInstance:
     - target: {fileID: 3348784851340841998, guid: 5bca43c2e1d58cd4ca4a0e77736df09c, type: 3}
       propertyPath: m_Name
       value: TargetFrameRate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348784851340841998, guid: 5bca43c2e1d58cd4ca4a0e77736df09c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3646949647769944440, guid: 5bca43c2e1d58cd4ca4a0e77736df09c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,6 +1,6 @@
-using System;
+
 using UnityEngine;
-using UnityEngine.InputSystem;
+using VContainer;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,98 +22,76 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject SpawnerBullet;
 
-    private PlayerAction actions;
     private Rigidbody rb;
-    private Vector2 MoveVector;
-    private Vector3 DirRotation;
-    private bool InteractOn;
     private Animator animator;
-    private bool isJump;
     private Health health;
 
-    public event Action OnInventoryClick;
-    public event Action OnPauseClick;
+    private IInputSystem _inputSystem;
+
+    [Inject]
+    public void Construct(IInputSystem inputSystem)
+    {
+        _inputSystem = inputSystem;
+    }
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        actions = new PlayerAction();
+
         health = GetComponent<Health>();
 
         Transform modelChild = transform.GetChild(0);
         animator = modelChild.GetComponent<Animator>();
     }
 
-    private void OnMove(InputAction.CallbackContext context)
-    { 
-        MoveVector = context.ReadValue<Vector2>(); 
-        animator.SetBool("IsRunning", true);
+    private void Start()
+    {
+        _inputSystem.OnDrinkBottleHealthClick += OnDrinkBottleHealth;
+        _inputSystem.OnAttackClick += OnAttack;
     }
 
-    private void OnMoveCancel(InputAction.CallbackContext context)
-    { 
-        MoveVector = Vector2.zero;
-        animator.SetBool("IsRunning", false);
-    }
 
-    private void OnInteract(InputAction.CallbackContext context)
-    => InteractOn = true;
-
-    private void InventoryClick(InputAction.CallbackContext context)
-        => OnInventoryClick?.Invoke();
-
-    private void OnJump(InputAction.CallbackContext context)
-     => isJump = true;
-
-    private void OnDrinkBottleHealth(InputAction.CallbackContext context)
+    private void OnDrinkBottleHealth()
     => health.TakeHealth(BottleHealthValue);
 
-
-    private void OnAttack(InputAction.CallbackContext context)
+    private void OnAttack()
     {
         SpawnerBullet sp = SpawnerBullet.GetComponent<SpawnerBullet>();
         sp.Shoot();
     }
 
-    private void OnPauseMenu(InputAction.CallbackContext context)
-        => OnPauseClick?.Invoke();
 
-
-    private void OnEnable()
-    {
-        actions.Player.Enable();
-        actions.Player.Move.performed += OnMove;
-        actions.Player.Move.canceled += OnMoveCancel;
-        actions.Player.Interaction.performed += OnInteract;
-        actions.Player.Inventory.performed += InventoryClick;
-        actions.Player.Jump.performed += OnJump;
-        actions.Player.Healing.performed += OnDrinkBottleHealth;
-        actions.Player.Attack.performed += OnAttack;
-        actions.Player.Pause.performed += OnPauseMenu;
-    }
     private void OnDisable()
     {
-        actions.Player.Disable();
-        actions.Player.Move.performed -= OnMove;
-        actions.Player.Move.canceled -= OnMoveCancel;
-        actions.Player.Interaction.performed -= OnInteract;
-        actions.Player.Inventory.performed -= InventoryClick;
-        actions.Player.Jump.performed -= OnJump;
-        actions.Player.Attack.performed -= OnAttack;
-        actions.Player.Pause.performed -= OnPauseMenu;
+        _inputSystem.OnDrinkBottleHealthClick -= OnDrinkBottleHealth;
+        _inputSystem.OnAttackClick -= OnAttack;
     }
 
 
-    public bool IsInteractOn() => InteractOn;
-    public void ResetInteract() => InteractOn = false;
+    public bool IsInteractOn() => _inputSystem.GetInteractOn();
+    public void ResetInteract() => _inputSystem.ResetInteractOn();
+
+    private void Update()
+    {
+        Vector2 input = _inputSystem.GetMoveVector();
+
+        if (input == Vector2.zero)
+        {
+            animator.SetBool("IsRunning", false);
+        }
+        else 
+        {
+            animator.SetBool("IsRunning", true);
+        }
+    }
 
     private void FixedUpdate()
     {
         Jump();
         IsGround();
 
-        Vector2 input = MoveVector;
+        Vector2 input = _inputSystem.GetMoveVector();
         if (input.magnitude < 0.1f)
         {
             input = Vector2.zero;
@@ -155,13 +133,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (isJump && IsGround())
+        if (_inputSystem.GetJump() && IsGround())
         {
             animator.SetBool("IsJumping", true);
             rb.AddForce(Vector3.up * PowerJump, ForceMode.Impulse);
         }
 
-        isJump = false;
+        _inputSystem.ResetJump();
     }
 
 

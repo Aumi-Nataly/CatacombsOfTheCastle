@@ -8,8 +8,7 @@ public class InventoryView : MonoBehaviour
     private Transform slotsParent;
     [SerializeField]
     private InventorySlotUI slotPrefab;
-    [SerializeField]
-    private GameObject Player;
+
     [SerializeField]
     private List<InvetoryModel> listItems = new();
 
@@ -17,26 +16,25 @@ public class InventoryView : MonoBehaviour
 
     private List<InventorySlotUI> slots = new();
 
-    private PlayerMovement pl;
     private IInventoryService _inventoryService;
+    private IInputSystem _inputSystem;
 
     [Inject]
-    public void Construct(IInventoryService inventoryService)
+    public void Construct(IInventoryService inventoryService, IInputSystem inputSystem)
     {
         _inventoryService = inventoryService;
+        _inputSystem = inputSystem;
     }
 
     private void Start()
     {
-        pl = Player.GetComponent<PlayerMovement>();
-        pl.OnInventoryClick += OpenCloseInventory;
-
+        _inputSystem.OnInventoryClick += OpenCloseInventory;
         Init();
     }
 
     private void OnDestroy()
     {
-        pl.OnInventoryClick -= OpenCloseInventory;
+        _inputSystem.OnInventoryClick -= OpenCloseInventory;
     }
 
     public void Init()
