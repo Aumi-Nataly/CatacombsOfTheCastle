@@ -5,6 +5,6 @@ public class BootstrapLoader : MonoBehaviour
 {
     void Start()
     {
-        SceneManager.LoadScene("PrisonLevel");
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

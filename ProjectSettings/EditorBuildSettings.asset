@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrap.unity
     guid: 3303bfe89c404c04681a546bb38c409b
   - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 455e2c4370829624a8e6b618304c1840
+  - enabled: 1
     path: Assets/Scenes/PrisonLevel.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
