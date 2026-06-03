@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using VContainer;
 
 public class PauseScreen : MonoBehaviour
@@ -59,6 +60,7 @@ public class PauseScreen : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        // Например: SceneManager.LoadScene("MainMenu");
+        LoaderScene.NextSceneName = "MainMenuScene";
+        SceneManager.LoadScene("LoadingScene");
     }
 }
