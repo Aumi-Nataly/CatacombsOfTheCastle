@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,10 @@ public class SpawnerEnemy : MonoBehaviour
     [SerializeField]
     private float WaveTimeInside;
 
+    public event Action<GameOverType> OnGameOver;
 
     private Pool pool;
-    private List<int> ActiveEnemyList = new List<int>();
+   private Stack<int> ActiveEnemyList = new Stack<int>();
 
     private void Awake()
     {
@@ -36,9 +38,9 @@ public class SpawnerEnemy : MonoBehaviour
         for (int i = 0; i < WaveSize; i++)
         {
             var obj = pool.GetFromPool();
-            ActiveEnemyList.Add(1);
+            ActiveEnemyList.Push(i);
 
-            var enemyScript = obj.GetComponent<Enemy>();
+             var enemyScript = obj.GetComponent<Enemy>();
             if (enemyScript != null)
             { 
               enemyScript.OnReturnPoolEnemy += ReturnToPool;
@@ -51,5 +53,11 @@ public class SpawnerEnemy : MonoBehaviour
     private void ReturnToPool(GameObject enemy)
     {
         pool.ReturnToPool(enemy);
+        ActiveEnemyList.Pop();
+
+        if (ActiveEnemyList.Count == 0)
+        {
+            OnGameOver?.Invoke(GameOverType.Win);
+        }
     }
 }

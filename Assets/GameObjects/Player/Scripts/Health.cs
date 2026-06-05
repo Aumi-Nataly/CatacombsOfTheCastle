@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
 
     private IInventoryService _inventoryService;
     public event Action<int, int> OnHealthChanged;
+    public event Action<GameOverType> OnGameOver;
 
     [Inject]
     public void Construct(IInventoryService inventoryService)
@@ -66,6 +67,6 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-
+        OnGameOver?.Invoke(GameOverType.Defeat);
     }
 }
