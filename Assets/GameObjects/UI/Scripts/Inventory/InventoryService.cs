@@ -28,7 +28,7 @@ public class InventoryService : IInventoryService
     {
         if (items.ContainsKey(id))
         {
-            items[id] = count; 
+            items[id] += count; 
         }
         else
         {
@@ -54,7 +54,7 @@ public class InventoryService : IInventoryService
     {
        var data = _saveService.LoadData(SaveType.Inventory);
 
-        if (data == null)
+        if (data == null || data.listParams == null)
             return;
 
         items.Clear();
@@ -89,5 +89,11 @@ public class InventoryService : IInventoryService
         }
 
         return 0;
+    }
+
+    public void ResetFile()
+    {
+        StartingData();
+        WriteToFile();
     }
 }

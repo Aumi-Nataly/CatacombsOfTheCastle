@@ -303,6 +303,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493172981364945137, guid: 9a10e8721e24dc145b634f428680f3dc, type: 3}
+      propertyPath: useInteractDoor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493172981364945137, guid: 9a10e8721e24dc145b634f428680f3dc, type: 3}
       propertyPath: parentReference.TypeName
       value: GameLifetimeScope
       objectReference: {fileID: 0}
@@ -2137,7 +2141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2374227359901728112, guid: 237c48f4ddb856d4ebc1ce125030122a, type: 3}
       propertyPath: WaveSize
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2374227359901728112, guid: 237c48f4ddb856d4ebc1ce125030122a, type: 3}
       propertyPath: prefabEnemy

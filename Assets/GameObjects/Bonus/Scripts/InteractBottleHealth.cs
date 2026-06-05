@@ -35,6 +35,8 @@ public class InteractBottleHealth : MonoBehaviour, IInterable
 
     void Start()
     {
+        //если разрабатывать игру с возможностью возвращения на предыдущий уровень,
+        // то собранные предметы повторно не отображать
         if (PlayerPrefs.GetInt("bottlehealth_" + Id.ToString(), 0) == 1)
         {
             gameObject.SetActive(false);

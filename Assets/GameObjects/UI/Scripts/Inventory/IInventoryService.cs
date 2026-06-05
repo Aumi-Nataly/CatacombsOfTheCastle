@@ -27,4 +27,9 @@ public interface IInventoryService
     public void WriteToFile();
 
     public int GetСoncreteItem(ItemType id);
+
+    /// <summary>
+    /// Сбросить сохраненные данные
+    /// </summary>
+    public void ResetFile();
 }

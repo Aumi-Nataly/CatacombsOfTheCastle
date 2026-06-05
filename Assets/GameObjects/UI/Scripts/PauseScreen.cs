@@ -11,11 +11,13 @@ public class PauseScreen : MonoBehaviour
 
     private bool HasOpened;
     private IInputSystem _inputSystem;
+    private IInventoryService _inventoryService;
 
     [Inject]
-    public void Construct(IInputSystem inputSystem)
+    public void Construct(IInputSystem inputSystem, IInventoryService inventoryService)
     {
         _inputSystem = inputSystem;
+        _inventoryService = inventoryService;
     }
 
     private void Start()
@@ -59,6 +61,7 @@ public class PauseScreen : MonoBehaviour
     }
     public void GoToMainMenu()
     {
+        _inventoryService.ResetFile();
         Time.timeScale = 1f;
         LoaderScene.NextSceneName = "MainMenuScene";
         _inputSystem.AddAttack();

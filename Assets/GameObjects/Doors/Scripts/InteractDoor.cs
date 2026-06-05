@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 
 public class InteractDoor : MonoBehaviour, IInterable
@@ -10,6 +11,14 @@ public class InteractDoor : MonoBehaviour, IInterable
     [SerializeField]
     private GameObject childTransform;
     Light lightComponent;
+    private IInventoryService _inventoryService;
+
+    [Inject]
+    public void Construct(IInventoryService inventoryService)
+    {
+        _inventoryService = inventoryService;
+    }
+
 
     void Awake()
     {     
@@ -29,6 +38,7 @@ public class InteractDoor : MonoBehaviour, IInterable
 
     public void Interact()
     {
+        _inventoryService.WriteToFile();
         LoaderScene.NextSceneName = NextLvlName;
         SceneManager.LoadScene("LoadingScene");
     }

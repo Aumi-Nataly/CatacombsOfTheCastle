@@ -1839,11 +1839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ac748ec9c13004dab4a87d712e945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseScreen
---- !u!1 &7106251438346580079 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1412062353719281238, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
-  m_PrefabInstance: {fileID: 7106251438346580076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7106251438346580080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8235968729101035220, guid: 3c6f1d470e356764e8072f86a6ed79b6, type: 3}
@@ -1862,7 +1857,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverScreen
   spawnerEnemy: {fileID: 0}
-  gameOverPanel: {fileID: 7106251438346580079}
+  gameOverPanel: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1001 &7833839618046578175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1877,7 +1873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3348784851340841998, guid: 5bca43c2e1d58cd4ca4a0e77736df09c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3646949647769944440, guid: 5bca43c2e1d58cd4ca4a0e77736df09c, type: 3}
       propertyPath: m_LocalPosition.x

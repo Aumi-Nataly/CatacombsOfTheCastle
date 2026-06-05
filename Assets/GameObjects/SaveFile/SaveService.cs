@@ -37,7 +37,7 @@ public class SaveService : ISaveService
     {
         string path = Path.Combine(Application.persistentDataPath, NameFile[data.Type]);
 
-        string json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(path, json);
 
         Debug.Log($"Данные {data.Type.ToString()} сохранены! {path}");

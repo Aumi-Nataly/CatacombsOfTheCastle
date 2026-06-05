@@ -20,12 +20,14 @@ public class GameOverScreen : MonoBehaviour
     private TMP_Text gameOverText;
     private Health health;
 
-    private IInputSystem _inputSystem;
+    private IInputSystem _inputSystem; 
+    private IInventoryService _inventoryService;
 
     [Inject]
-    public void Construct(IInputSystem inputSystem)
+    public void Construct(IInputSystem inputSystem, IInventoryService inventoryService)
     {
         _inputSystem = inputSystem;
+        _inventoryService = inventoryService;
     }
 
 
@@ -59,7 +61,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        Debug.Log("В меню!!!!!!!!!!!!");
+        _inventoryService.ResetFile();
         Time.timeScale = 1f;
         LoaderScene.NextSceneName = "MainMenuScene";
         _inputSystem.AddAttack();
