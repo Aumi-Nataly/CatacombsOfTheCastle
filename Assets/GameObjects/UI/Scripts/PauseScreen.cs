@@ -61,6 +61,7 @@ public class PauseScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         LoaderScene.NextSceneName = "MainMenuScene";
+        _inputSystem.AddAttack();
         SceneManager.LoadScene("LoadingScene");
     }
 }

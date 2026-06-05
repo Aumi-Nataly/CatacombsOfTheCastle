@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VContainer;
 
 public class GameOverScreen : MonoBehaviour
@@ -50,9 +51,18 @@ public class GameOverScreen : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         _inputSystem.ResetAttack();
+
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
         gameOverText.text = gameType == GameOverType.Win ? "Выиграли!" : "Проиграли...";
     }
 
+    public void GoToMainMenu()
+    {
+        Debug.Log("В меню!!!!!!!!!!!!");
+        Time.timeScale = 1f;
+        LoaderScene.NextSceneName = "MainMenuScene";
+        _inputSystem.AddAttack();
+        SceneManager.LoadScene("LoadingScene");
+    }
 }
