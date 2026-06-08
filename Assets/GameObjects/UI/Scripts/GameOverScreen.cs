@@ -22,12 +22,14 @@ public class GameOverScreen : MonoBehaviour
 
     private IInputSystem _inputSystem; 
     private IInventoryService _inventoryService;
+    private MusicManager _musicManager;
 
     [Inject]
-    public void Construct(IInputSystem inputSystem, IInventoryService inventoryService)
+    public void Construct(IInputSystem inputSystem, IInventoryService inventoryService, MusicManager musicManager)
     {
         _inputSystem = inputSystem;
         _inventoryService = inventoryService;
+        _musicManager = musicManager;
     }
 
 
@@ -65,6 +67,7 @@ public class GameOverScreen : MonoBehaviour
         Time.timeScale = 1f;
         LoaderScene.NextSceneName = "MainMenuScene";
         _inputSystem.AddAttack();
+        _musicManager.StopBackgroundMusic();
         SceneManager.LoadScene("LoadingScene");
     }
 }

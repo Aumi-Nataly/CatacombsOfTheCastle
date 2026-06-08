@@ -11,8 +11,7 @@ public class LevelLifetimeScope : LifetimeScope
     private bool useInteractDoor = true;
     protected override void Configure(IContainerBuilder builder)
     {
-        //builder.Register<ISaveService, SaveService>(Lifetime.Scoped);
-        //builder.Register<IInventoryService, InventoryService>(Lifetime.Scoped);
+        builder.RegisterComponentInHierarchy<BackgroundLevelMusic>();
 
         if (useInteractKey)
             builder.RegisterComponentInHierarchy<InteractKey>();

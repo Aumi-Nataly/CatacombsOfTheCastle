@@ -12,11 +12,13 @@ public class InteractDoor : MonoBehaviour, IInterable
     private GameObject childTransform;
     Light lightComponent;
     private IInventoryService _inventoryService;
+    private MusicManager _musicManager;
 
     [Inject]
-    public void Construct(IInventoryService inventoryService)
+    public void Construct(IInventoryService inventoryService, MusicManager musicManager)
     {
         _inventoryService = inventoryService;
+        _musicManager = musicManager;
     }
 
 
@@ -39,6 +41,7 @@ public class InteractDoor : MonoBehaviour, IInterable
     public void Interact()
     {
         _inventoryService.WriteToFile();
+        _musicManager.StopBackgroundMusic();
         LoaderScene.NextSceneName = NextLvlName;
         SceneManager.LoadScene("LoadingScene");
     }

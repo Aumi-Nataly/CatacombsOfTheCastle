@@ -8,5 +8,6 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<IInputSystem, InputSystem>(Lifetime.Singleton);
         builder.Register<ISaveService, SaveService>(Lifetime.Singleton);
         builder.Register<IInventoryService, InventoryService>(Lifetime.Singleton);
+        builder.RegisterComponentInHierarchy<MusicManager>();
     }
 }

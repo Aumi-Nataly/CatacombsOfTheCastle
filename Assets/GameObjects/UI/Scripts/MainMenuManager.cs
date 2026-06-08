@@ -1,10 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     private string NextLvlName;
+
+    private MusicManager _musicManager;
+
+    [Inject]
+    public void Construct(MusicManager musicManager)
+    {
+        _musicManager = musicManager;
+    }
+
 
     void Awake()
     {
@@ -15,12 +25,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnNewGame()
     {
+        _musicManager.StopBackgroundMusic();
         LoaderScene.NextSceneName = NextLvlName;
         SceneManager.LoadScene("LoadingScene");
     }
 
     public void OnExitGame()
     {
+        _musicManager.StopBackgroundMusic();
         Application.Quit();
     }
 }
