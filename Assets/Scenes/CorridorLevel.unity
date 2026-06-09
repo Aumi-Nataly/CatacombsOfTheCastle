@@ -1089,6 +1089,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   useInteractKey: 1
   useInteractDoor: 1
+  useSpawnerEnemy: 0
 --- !u!1001 &1506479147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1159,6 +1160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1480071737}
     m_Modifications:
+    - target: {fileID: 302430689665074218, guid: 4bf6a226955184845ad6764e8871e3bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5682568730441534268, guid: 4bf6a226955184845ad6764e8871e3bc, type: 3}
       propertyPath: m_Name
       value: Wood Door (1)
@@ -1173,7 +1178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7447872943420212534, guid: 4bf6a226955184845ad6764e8871e3bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.79
+      value: 18.289
       objectReference: {fileID: 0}
     - target: {fileID: 7447872943420212534, guid: 4bf6a226955184845ad6764e8871e3bc, type: 3}
       propertyPath: m_LocalRotation.w

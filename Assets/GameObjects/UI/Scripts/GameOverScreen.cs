@@ -34,7 +34,7 @@ public class GameOverScreen : MonoBehaviour
 
 
     public void Start()
-    {
+    {     
         gameOverText = gameOverPanel.GetComponentInChildren<TMP_Text>();
 
         if (spawnerEnemy != null)
@@ -52,6 +52,7 @@ public class GameOverScreen : MonoBehaviour
 
     private void ResultOfGame(GameOverType gameType)
     {
+        _musicManager.PlayGameOverSound();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         _inputSystem.ResetAttack();
@@ -68,6 +69,7 @@ public class GameOverScreen : MonoBehaviour
         LoaderScene.NextSceneName = "MainMenuScene";
         _inputSystem.AddAttack();
         _musicManager.StopBackgroundMusic();
+        _musicManager.PlayMenuClick();
         SceneManager.LoadScene("LoadingScene");
     }
 }

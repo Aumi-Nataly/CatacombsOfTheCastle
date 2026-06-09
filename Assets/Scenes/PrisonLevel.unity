@@ -1217,6 +1217,10 @@ PrefabInstance:
       value: CorridorLevel
       objectReference: {fileID: 0}
     - target: {fileID: 1493172981364945137, guid: 9a10e8721e24dc145b634f428680f3dc, type: 3}
+      propertyPath: useSpawnerEnemy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493172981364945137, guid: 9a10e8721e24dc145b634f428680f3dc, type: 3}
       propertyPath: parentReference.TypeName
       value: GameLifetimeScope
       objectReference: {fileID: 0}

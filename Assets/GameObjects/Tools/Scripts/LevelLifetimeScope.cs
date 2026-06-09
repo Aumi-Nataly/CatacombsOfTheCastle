@@ -9,6 +9,9 @@ public class LevelLifetimeScope : LifetimeScope
 
     [SerializeField]
     private bool useInteractDoor = true;
+
+    [SerializeField]
+    private bool useSpawnerEnemy = true;
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterComponentInHierarchy<BackgroundLevelMusic>();
@@ -18,6 +21,9 @@ public class LevelLifetimeScope : LifetimeScope
 
         if (useInteractDoor)
             builder.RegisterComponentInHierarchy<InteractDoor>();
+
+        if (useSpawnerEnemy)
+            builder.RegisterComponentInHierarchy<SpawnerEnemy>();
 
 
         builder.RegisterComponentInHierarchy<InventoryView>();

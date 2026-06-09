@@ -26,6 +26,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnNewGame()
     {
         _musicManager.StopBackgroundMusic();
+        _musicManager.PlayMenuClick();
         LoaderScene.NextSceneName = NextLvlName;
         SceneManager.LoadScene("LoadingScene");
     }
@@ -33,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnExitGame()
     {
         _musicManager.StopBackgroundMusic();
+        _musicManager.PlayMenuClick();
         Application.Quit();
     }
 }

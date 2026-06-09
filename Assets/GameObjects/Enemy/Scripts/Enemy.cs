@@ -24,8 +24,14 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private Health playerHealth;
     private int CurrentHealth;
+    private MusicManager _musicManager;
 
     public EnemyStateMachine enemyStateMachine => machine;
+
+    public void Initialize(MusicManager musicManager)
+    {
+        _musicManager = musicManager;
+    }    
 
     private void Awake()
     {
@@ -69,6 +75,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
+        _musicManager.PlayEnemyGrowlSound();
         playerHealth.TakeDamage(DamageValue);
     }
 

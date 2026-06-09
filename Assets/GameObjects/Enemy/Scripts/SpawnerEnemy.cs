@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using VContainer;
 
 public class SpawnerEnemy : MonoBehaviour
 {
@@ -20,7 +22,14 @@ public class SpawnerEnemy : MonoBehaviour
     public event Action<GameOverType> OnGameOver;
 
     private Pool pool;
-   private Stack<int> ActiveEnemyList = new Stack<int>();
+    private Stack<int> ActiveEnemyList = new Stack<int>();
+    private MusicManager _musicManager;
+
+    [Inject]
+    public void Construct(MusicManager musicManager)
+    {
+        _musicManager = musicManager;
+    }
 
     private void Awake()
     {
@@ -42,7 +51,8 @@ public class SpawnerEnemy : MonoBehaviour
 
              var enemyScript = obj.GetComponent<Enemy>();
             if (enemyScript != null)
-            { 
+            {
+              enemyScript.Initialize(_musicManager);
               enemyScript.OnReturnPoolEnemy += ReturnToPool;
             }
             

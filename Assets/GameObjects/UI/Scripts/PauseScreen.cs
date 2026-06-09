@@ -59,6 +59,7 @@ public class PauseScreen : MonoBehaviour
 
     public void ResumeGame()
     {
+        _musicManager.PlayMenuClick();
         ViewPauseScreen();
     }
     public void GoToMainMenu()
@@ -68,6 +69,7 @@ public class PauseScreen : MonoBehaviour
         LoaderScene.NextSceneName = "MainMenuScene";
         _inputSystem.AddAttack();
         _musicManager.StopBackgroundMusic();
+        _musicManager.PlayMenuClick();
         SceneManager.LoadScene("LoadingScene");
     }
 }

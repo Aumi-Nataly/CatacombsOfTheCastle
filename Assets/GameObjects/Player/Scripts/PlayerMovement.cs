@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnAttack()
     {
         SpawnerBullet sp = SpawnerBullet.GetComponent<SpawnerBullet>();
+        _musicManager.PlayBulletSound();
         sp.Shoot();
     }
 

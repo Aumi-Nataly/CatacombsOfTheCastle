@@ -197,6 +197,10 @@ MonoBehaviour:
   runPlayerSoundClip: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
   jumpPlayerSoundClip: {fileID: 8300000, guid: 1d6245cc15e5dcf45a9646e78e3031db, type: 3}
   getBonusSoundClip: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  menuClickClip: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
+  BulletClip: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  EnemyGrowlClip: {fileID: 8300000, guid: f11db4559b3ffff45b62e9327fc5535d, type: 3}
+  GameOverClip: {fileID: 8300000, guid: aa967a280457c054bb646d57611f5bd0, type: 3}
 --- !u!4 &1785867868
 Transform:
   m_ObjectHideFlags: 0

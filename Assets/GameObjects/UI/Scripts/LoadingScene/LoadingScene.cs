@@ -25,9 +25,7 @@ public class LoadingScene : MonoBehaviour
         while (!asyncLoad.isDone)
         {
             float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            Debug.Log($"asyncLoad.progress :{asyncLoad.progress}");
 
-            //percentText.text = (progress * 100).ToString();
             percentText.text = (fakepercent).ToString();
 
             yield return new WaitForSeconds(0.5f);
