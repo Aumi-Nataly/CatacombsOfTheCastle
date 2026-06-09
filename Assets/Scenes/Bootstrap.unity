@@ -196,6 +196,7 @@ MonoBehaviour:
   audioLevelClip: {fileID: 8300000, guid: c13b31998430d5243be685cab79c26be, type: 3}
   runPlayerSoundClip: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
   jumpPlayerSoundClip: {fileID: 8300000, guid: 1d6245cc15e5dcf45a9646e78e3031db, type: 3}
+  getBonusSoundClip: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
 --- !u!4 &1785867868
 Transform:
   m_ObjectHideFlags: 0

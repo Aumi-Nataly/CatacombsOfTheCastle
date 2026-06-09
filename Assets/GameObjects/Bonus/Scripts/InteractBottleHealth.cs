@@ -7,6 +7,7 @@ public class InteractBottleHealth : MonoBehaviour, IInterable
     private int Id;
 
     private IInventoryService _inventoryService;
+    private MusicManager _musicManager;
 
     public void ChangeLight(bool enable)
     {
@@ -14,9 +15,10 @@ public class InteractBottleHealth : MonoBehaviour, IInterable
     }
 
     [Inject]
-    public void Construct(IInventoryService inventoryService)
+    public void Construct(IInventoryService inventoryService, MusicManager musicManager)
     {
         _inventoryService = inventoryService;
+        _musicManager = musicManager;
     }
 
     public string GetInteractPromt()
@@ -26,6 +28,7 @@ public class InteractBottleHealth : MonoBehaviour, IInterable
 
     public void Interact()
     {
+        _musicManager.PlayGetBonusSound();
         _inventoryService.Add(ItemType.HealthBottle, 1);
         gameObject.SetActive(false);
 

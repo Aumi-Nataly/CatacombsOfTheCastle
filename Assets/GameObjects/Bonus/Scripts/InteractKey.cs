@@ -7,11 +7,13 @@ public class InteractKey : MonoBehaviour, IInterable
     private int Id;
 
     private  IInventoryService _inventoryService;
+    private MusicManager _musicManager;
 
     [Inject]
-    public void Construct(IInventoryService inventoryService)
+    public void Construct(IInventoryService inventoryService, MusicManager musicManager)
     {
         _inventoryService = inventoryService;
+        _musicManager = musicManager;
     }
 
     void Start()
@@ -35,6 +37,7 @@ public class InteractKey : MonoBehaviour, IInterable
 
     public void Interact()
     {
+        _musicManager.PlayGetBonusSound();
         _inventoryService.Add(ItemType.Key, 1);
         gameObject.SetActive(false);
         

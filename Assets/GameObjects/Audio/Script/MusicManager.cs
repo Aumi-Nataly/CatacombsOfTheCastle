@@ -14,10 +14,14 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioClip jumpPlayerSoundClip;
 
+    [SerializeField]
+    private AudioClip getBonusSoundClip;
+
     private AudioSource MenuSource;
     private AudioSource LevelSource;
     private AudioSource RunPlayerSource;
     private AudioSource JumpPlayerSource;
+    private AudioSource GetBonusSource;
 
     private void Awake()
     {
@@ -42,6 +46,10 @@ public class MusicManager : MonoBehaviour
         JumpPlayerSource = gameObject.AddComponent<AudioSource>();
         JumpPlayerSource.clip = jumpPlayerSoundClip;
         JumpPlayerSource.volume = 0.8f;
+
+        GetBonusSource = gameObject.AddComponent<AudioSource>();
+        GetBonusSource.clip = getBonusSoundClip;
+        GetBonusSource.volume = 0.8f;
 
     }
 
@@ -96,6 +104,14 @@ public class MusicManager : MonoBehaviour
         if (JumpPlayerSource != null && jumpPlayerSoundClip != null)
         {
             JumpPlayerSource.PlayOneShot(jumpPlayerSoundClip);
+        }
+    }
+
+    public void PlayGetBonusSound()
+    {
+        if (GetBonusSource != null && getBonusSoundClip != null)
+        {
+            GetBonusSource.PlayOneShot(getBonusSoundClip);
         }
     }
 }
