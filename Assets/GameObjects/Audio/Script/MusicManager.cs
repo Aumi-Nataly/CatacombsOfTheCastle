@@ -8,8 +8,16 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioClip audioLevelClip;
 
+    [SerializeField]
+    private AudioClip runPlayerSoundClip;
+
+    [SerializeField]
+    private AudioClip jumpPlayerSoundClip;
+
     private AudioSource MenuSource;
     private AudioSource LevelSource;
+    private AudioSource RunPlayerSource;
+    private AudioSource JumpPlayerSource;
 
     private void Awake()
     {
@@ -24,6 +32,17 @@ public class MusicManager : MonoBehaviour
         LevelSource.clip = audioLevelClip;
         MenuSource.loop = true;
         LevelSource.volume = 0.5f;
+
+        RunPlayerSource = gameObject.AddComponent<AudioSource>();
+        RunPlayerSource.clip = runPlayerSoundClip;
+        RunPlayerSource.loop = true;
+        RunPlayerSource.volume = 0.7f;
+        RunPlayerSource.pitch = 1.7f;
+
+        JumpPlayerSource = gameObject.AddComponent<AudioSource>();
+        JumpPlayerSource.clip = jumpPlayerSoundClip;
+        JumpPlayerSource.volume = 0.8f;
+
     }
 
     public void PlayMusicMenu()
@@ -50,6 +69,33 @@ public class MusicManager : MonoBehaviour
         if (currentPlay != null)
         {
             currentPlay.Stop();
+        }
+    }
+
+    public void PlayRunPlayerSound(float speed, bool isGround)
+    {
+        if (RunPlayerSource != null && runPlayerSoundClip != null)
+        {
+            float currentSpeed = Mathf.Abs(speed);
+            bool shouldPlay = currentSpeed > 0.1 && isGround;
+
+            if (shouldPlay && !RunPlayerSource.isPlaying)
+            {
+                RunPlayerSource.Play();
+            }
+            else if (!shouldPlay && RunPlayerSource.isPlaying)
+            {
+                RunPlayerSource.Stop();
+            }
+
+        }
+    }
+
+    public void PlayJumpPlayerSound()
+    {
+        if (JumpPlayerSource != null && jumpPlayerSoundClip != null)
+        {
+            JumpPlayerSource.PlayOneShot(jumpPlayerSoundClip);
         }
     }
 }

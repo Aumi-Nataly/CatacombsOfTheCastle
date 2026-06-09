@@ -27,11 +27,13 @@ public class PlayerMovement : MonoBehaviour
     private Health health;
 
     private IInputSystem _inputSystem;
+    private MusicManager _musicManager;
 
     [Inject]
-    public void Construct(IInputSystem inputSystem)
+    public void Construct(IInputSystem inputSystem, MusicManager musicManager)
     {
         _inputSystem = inputSystem;
+        _musicManager = musicManager;
     }
 
 
@@ -79,10 +81,12 @@ public class PlayerMovement : MonoBehaviour
         if (input == Vector2.zero)
         {
             animator.SetBool("IsRunning", false);
+            _musicManager.PlayRunPlayerSound(0f, IsGround());
         }
         else 
         {
             animator.SetBool("IsRunning", true);
+            _musicManager.PlayRunPlayerSound(1f, IsGround());
         }
     }
 
@@ -90,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Jump();
         IsGround();
+       
 
         Vector2 input = _inputSystem.GetMoveVector();
         if (input.magnitude < 0.1f)
@@ -114,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
             rb.MoveRotation(rb.rotation * delta);   
 
         }
+ 
 
     }
 
@@ -135,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_inputSystem.GetJump() && IsGround())
         {
+            _musicManager.PlayJumpPlayerSound();
             animator.SetBool("IsJumping", true);
             rb.AddForce(Vector3.up * PowerJump, ForceMode.Impulse);
         }
