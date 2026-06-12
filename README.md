@@ -2,7 +2,7 @@
 
 3D top-down action game на Unity с системой инвентаря, стрельбой, волнами врагов, состояниями ИИ и внедрением зависимостей через VContainer.
 
-🎮 Скачать игру / посмотреть скрины: 
+🎮 Скачать игру: https://disk.yandex.ru/d/CCuMNdB-XBNq2A
 
 🎥 Видео геймплея: https://rutube.ru/video/df30bdb3e9d0f0b1579741e7bbbc7d1b/
 
