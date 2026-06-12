@@ -77,4 +77,13 @@ _Архитектура_
 * PlayerPrefs
 * Сохранение прогресса в файл *.json
 
+<img width="2104" height="800" alt="2026-06-10_14-33-10" src="https://github.com/user-attachments/assets/bf22dcd8-7655-4f11-bc50-7428aa7a3cae" />
+<img width="2528" height="1442" alt="2026-06-10_14-32-57" src="https://github.com/user-attachments/assets/13ff5ba2-556e-425a-b665-54f7846f5911" />
+<img width="2560" height="1600" alt="2026-06-10_11-44-46" src="https://github.com/user-attachments/assets/08e0c0d7-e2ac-4757-92b8-6a6c8300fcce" />
+<img width="2560" height="1600" alt="2026-06-10_11-45-44" src="https://github.com/user-attachments/assets/07b2be57-d6de-403d-aa29-8685493cb6d7" />
+<img width="2560" height="1600" alt="2026-06-10_11-46-00" src="https://github.com/user-attachments/assets/34a231e5-5978-41ef-9cd7-c2376431221e" />
+<img width="2560" height="1600" alt="2026-06-10_11-46-10" src="https://github.com/user-attachments/assets/fc5c49d2-b90a-434d-870f-dbbf159c3be8" />
+<img width="2560" height="1600" alt="2026-06-10_11-46-24" src="https://github.com/user-attachments/assets/942d741a-36d7-4de0-9098-76fdc972f8cd" />
+<img width="2560" height="1600" alt="2026-06-10_11-46-54" src="https://github.com/user-attachments/assets/f68a55b1-82df-41f1-81f8-b4db0d481b29" />
+
 
